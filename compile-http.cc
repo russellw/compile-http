@@ -64,6 +64,8 @@ int main(int argc, char** argv) {
 
 			// input file
 			ifstream is(file, ios::binary);
+			if (!is)
+				throw runtime_error(file + ": " + strerror(errno));
 			vector<unsigned char> bytes{istreambuf_iterator<char>(is), istreambuf_iterator<char>()};
 
 			// HTTP header
